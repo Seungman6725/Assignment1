@@ -43,7 +43,7 @@ public class VenueHireSystem {
 
       if ((venue.get_Venue_Code()).equals(venueCode)){
 
-        MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage();
+        MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venue.get_Venue_Code(),venue.get_Venue_Name());
       }
     }
 
