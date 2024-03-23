@@ -33,19 +33,56 @@ public class VenueHireSystem {
 
   public void createVenue(String venueName, String venueCode, String capacityInput, String hireFeeInput) {
 
+    //If the venue name is empty
     if(venueName.isEmpty()){
 
       System.out.println("Venue not created: venue name must not be empty.");
       
     }
-
+    
+    //If there are two instances of the same venue code in the system
     for (WeddingVenue venue: venueList){
 
       if ((venue.get_Venue_Code()).equals(venueCode)){
 
         MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venue.get_Venue_Code(),venue.get_Venue_Name());
+        
+        break;
       }
     }
+
+    //If the capacity isnt a whole integer, isnt negative, isnt zero
+    try {
+      
+      int int_venue_capacity = Integer.parseInt(capacityInput);
+
+      if(int_venue_capacity < 0){
+
+        System.out.println("Venue not created: capacity must be a positive number.");
+      }
+
+    }catch (Exception e){
+      
+      System.out.println("Venue not created: capacity must be a number.");
+    }
+
+    //If the hire fee isnt a whole integer, isnt negative, isnt zero
+    try {
+      
+      int int_venue_hire_fee = Integer.parseInt(hireFeeInput);
+
+      if(int_venue_hire_fee < 0){
+
+        System.out.println("Venue not created: hire fee must be a positive number.");
+      }
+
+    }catch (Exception e){
+      
+      System.out.println("Venue not created: hire fee must be a number.");
+    }
+
+
+
 
 
      
