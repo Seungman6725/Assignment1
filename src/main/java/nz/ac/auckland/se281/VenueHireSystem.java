@@ -3,6 +3,9 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
+
+
+
 public class VenueHireSystem {
 
   int numberOfVenues = 0;
@@ -25,8 +28,17 @@ public class VenueHireSystem {
   }
 
   public void createVenue(String venueName, String venueCode, String capacityInput, String hireFeeInput) {
-     
 
+    if(venueName.isEmpty()){
+
+      System.out.println("Venue not created: venue name must not be empty.");
+      break;
+    }
+
+    for (WeddingVenue venue: venues)
+
+    
+     
   }
 
   public void setSystemDate(String dateInput) {
