@@ -15,7 +15,6 @@ public class VenueHireSystem {
   int numberOfVenues = 0;
 
   
-
   public void printVenues() {
     
     switch(numberOfVenues){
@@ -92,9 +91,11 @@ public class VenueHireSystem {
     }
 
     //If none of these conditions are met add to arraylist
-
     venueList.add(new WeddingVenue(venueName,venueCode,capacityInput,hireFeeInput));
 
+    MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName,venueCode);
+    
+    numberOfVenues++;
   }
 
   public void setSystemDate(String dateInput) {
