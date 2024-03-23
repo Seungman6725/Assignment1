@@ -47,7 +47,7 @@ public class VenueHireSystem {
     // When the number of venues is 10 or more
     else if (numberOfVenues >= 10) {
 
-      MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(numberOfVenues));
+      MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(numberOfVenues), "s");
 
       for (WeddingVenue venue : venueList) {
 
