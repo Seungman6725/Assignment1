@@ -1,5 +1,7 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
+
 import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
@@ -7,6 +9,8 @@ import nz.ac.auckland.se281.Types.FloralType;
 
 
 public class VenueHireSystem {
+
+  ArrayList<WeddingVenue> venueList = new ArrayList<>();
 
   int numberOfVenues = 0;
 
@@ -32,12 +36,18 @@ public class VenueHireSystem {
     if(venueName.isEmpty()){
 
       System.out.println("Venue not created: venue name must not be empty.");
-      break;
+      
     }
 
-    for (WeddingVenue venue: venues)
+    for (WeddingVenue venue: venueList){
 
-    
+      if ((venue.get_Venue_Code()).equals(venueCode)){
+
+        MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage();
+      }
+    }
+
+
      
   }
 
