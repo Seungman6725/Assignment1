@@ -10,6 +10,38 @@ public class VenueHireSystem {
 
   int numberOfVenues = 0;
 
+  public String int_to_word(int numberOfVenues) {
+
+    switch (numberOfVenues) {
+      case 2:
+        return "two";
+
+      case 3:
+        return "three";
+
+      case 4:
+        return "four";
+
+      case 5:
+        return "five";
+
+      case 6:
+        return "six";
+
+      case 7:
+        return "seven";
+
+      case 8:
+        return "eight";
+
+      case 9:
+        return "nine";
+
+      default:
+        return "Invalid number";
+    }
+  }
+
   public void printVenues() {
 
     switch (numberOfVenues) {
@@ -31,7 +63,7 @@ public class VenueHireSystem {
     // When the number of venues is > 1 but < 10
     if (numberOfVenues > 1 && numberOfVenues < 10) {
 
-      MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(numberOfVenues), "s");
+      MessageCli.NUMBER_VENUES.printMessage("are", int_to_word(numberOfVenues), "s");
 
       for (WeddingVenue venue : venueList) {
 
