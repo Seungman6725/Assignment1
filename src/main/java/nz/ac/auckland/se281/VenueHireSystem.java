@@ -5,15 +5,28 @@ import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
 
+  int numberOfVenues = 0;
+
   public VenueHireSystem() {}
 
   public void printVenues() {
-    // TODO implement this method
+    
+    switch(numberOfVenues){
+
+      case 0:
+        System.out.println("There are no venues in the system. Please create a venue first.");
+        break;
+      
+      case 1:
+        System.out.println("There is one venue in the system:");
+        MessageCli.VENUE_ENTRY.printMessage()
+
+    }
   }
 
-  public void createVenue(
-      String venueName, String venueCode, String capacityInput, String hireFeeInput) {
-    // TODO implement this method
+  public void createVenue(String venueName, String venueCode, String capacityInput, String hireFeeInput) {
+     
+
   }
 
   public void setSystemDate(String dateInput) {
