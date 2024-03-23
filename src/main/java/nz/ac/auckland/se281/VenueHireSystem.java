@@ -14,7 +14,7 @@ public class VenueHireSystem {
 
   int numberOfVenues = 0;
 
-  public VenueHireSystem() {}
+  
 
   public void printVenues() {
     
@@ -37,7 +37,8 @@ public class VenueHireSystem {
     if(venueName.isEmpty()){
 
       System.out.println("Venue not created: venue name must not be empty.");
-      
+
+      return;
     }
     
     //If there are two instances of the same venue code in the system
@@ -47,8 +48,9 @@ public class VenueHireSystem {
 
         MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venue.get_Venue_Code(),venue.get_Venue_Name());
         
-        break;
+        return;
       }
+
     }
 
     //If the capacity isnt a whole integer, isnt negative, isnt zero
@@ -56,14 +58,18 @@ public class VenueHireSystem {
       
       int int_venue_capacity = Integer.parseInt(capacityInput);
 
-      if(int_venue_capacity < 0){
+      if(int_venue_capacity <= 0){
 
         System.out.println("Venue not created: capacity must be a positive number.");
+
+        return;
       }
 
     }catch (Exception e){
       
       System.out.println("Venue not created: capacity must be a number.");
+
+      return;
     }
 
     //If the hire fee isnt a whole integer, isnt negative, isnt zero
@@ -71,21 +77,24 @@ public class VenueHireSystem {
       
       int int_venue_hire_fee = Integer.parseInt(hireFeeInput);
 
-      if(int_venue_hire_fee < 0){
+      if(int_venue_hire_fee <= 0){
 
         System.out.println("Venue not created: hire fee must be a positive number.");
+
+        return;
       }
 
     }catch (Exception e){
       
       System.out.println("Venue not created: hire fee must be a number.");
+
+      return;
     }
 
+    //If none of these conditions are met add to arraylist
 
+    venueList.add(new WeddingVenue(venueName,venueCode,capacityInput,hireFeeInput));
 
-
-
-     
   }
 
   public void setSystemDate(String dateInput) {
