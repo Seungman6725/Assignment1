@@ -12,7 +12,7 @@ public class VenueHireSystem {
 
   // A method to convert the number of venues to words when the number of venues if from
   // 2 to 9.
-  public String int_to_word(int numberOfVenues) {
+  public String intToWord(int numberOfVenues) {
 
     switch (numberOfVenues) {
       case 2:
@@ -65,7 +65,7 @@ public class VenueHireSystem {
     // When the number of venues is > 1 but < 10
     if (numberOfVenues > 1 && numberOfVenues < 10) {
 
-      MessageCli.NUMBER_VENUES.printMessage("are", int_to_word(numberOfVenues), "s");
+      MessageCli.NUMBER_VENUES.printMessage("are", intToWord(numberOfVenues), "s");
 
       for (WeddingVenue venue : venueList) {
 
@@ -121,9 +121,9 @@ public class VenueHireSystem {
     // If the capacity isnt a whole integer, isnt negative, isnt zero
     try {
 
-      int int_venue_capacity = Integer.parseInt(capacityInput);
+      int intVenueCapacity = Integer.parseInt(capacityInput);
 
-      if (int_venue_capacity <= 0) {
+      if (intVenueCapacity <= 0) {
 
         System.out.println("Venue not created: capacity must be a positive number.");
 
@@ -140,9 +140,9 @@ public class VenueHireSystem {
     // If the hire fee isnt a whole integer, isnt negative, isnt zero
     try {
 
-      int int_venue_hire_fee = Integer.parseInt(hireFeeInput);
+      int intVenueHireFee = Integer.parseInt(hireFeeInput);
 
-      if (int_venue_hire_fee <= 0) {
+      if (intVenueHireFee <= 0) {
 
         System.out.println("Venue not created: hire fee must be a positive number.");
 
