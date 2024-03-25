@@ -2,37 +2,37 @@ package nz.ac.auckland.se281;
 
 public class WeddingVenue {
 
-  private String Venue_Name;
-  private String Venue_Code;
-  private String Venue_Capacity;
-  private String Venue_Hire_Fee;
+  private String venueName;
+  private String venueCode;
+  private String venueCapacity;
+  private String venueHireFee;
 
   public WeddingVenue(
-      String Venue_Name, String Venue_Code, String Venue_Capacity, String Venue_Hire_Fee) {
+      String venueName, String venueCode, String venueCapacity, String venueHireFee) {
 
-    this.Venue_Name = Venue_Name;
-    this.Venue_Code = Venue_Code;
-    this.Venue_Capacity = Venue_Capacity;
-    this.Venue_Hire_Fee = Venue_Hire_Fee;
+    this.venueName = venueName;
+    this.venueCode = venueCode;
+    this.venueCapacity = venueCapacity;
+    this.venueHireFee = venueHireFee;
   }
 
-  public String get_Venue_Name() {
+  public String getVenueName() {
 
-    return Venue_Name;
+    return venueName;
   }
 
-  public String get_Venue_Code() {
+  public String getVenueCode() {
 
-    return Venue_Code;
+    return venueCode;
   }
 
-  public String get_Venue_Capacity() {
+  public String getVenueCapacity() {
 
-    return Venue_Capacity;
+    return venueCapacity;
   }
 
-  public String get_Venue_Hire_Fee() {
+  public String getVenueHireFee() {
 
-    return Venue_Hire_Fee;
+    return venueHireFee;
   }
 }

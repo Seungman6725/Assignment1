@@ -52,10 +52,10 @@ public class VenueHireSystem {
       case 1:
         System.out.println("There is one venue in the system:");
         MessageCli.VENUE_ENTRY.printMessage(
-            venueList.get(0).get_Venue_Name(),
-            venueList.get(0).get_Venue_Code(),
-            venueList.get(0).get_Venue_Capacity(),
-            venueList.get(0).get_Venue_Hire_Fee(),
+            venueList.get(0).getVenueName(),
+            venueList.get(0).getVenueCode(),
+            venueList.get(0).getVenueCapacity(),
+            venueList.get(0).getVenueHireFee(),
             "TODO");
         break;
     }
@@ -68,10 +68,10 @@ public class VenueHireSystem {
       for (WeddingVenue venue : venueList) {
 
         MessageCli.VENUE_ENTRY.printMessage(
-            venue.get_Venue_Name(),
-            venue.get_Venue_Code(),
-            venue.get_Venue_Capacity(),
-            venue.get_Venue_Hire_Fee(),
+            venue.getVenueName(),
+            venue.getVenueCode(),
+            venue.getVenueCapacity(),
+            venue.getVenueHireFee(),
             "TODO");
       }
     }
@@ -84,10 +84,10 @@ public class VenueHireSystem {
       for (WeddingVenue venue : venueList) {
 
         MessageCli.VENUE_ENTRY.printMessage(
-            venue.get_Venue_Name(),
-            venue.get_Venue_Code(),
-            venue.get_Venue_Capacity(),
-            venue.get_Venue_Hire_Fee(),
+            venue.getVenueName(),
+            venue.getVenueCode(),
+            venue.getVenueCapacity(),
+            venue.getVenueHireFee(),
             "TODO");
       }
     }
@@ -107,10 +107,10 @@ public class VenueHireSystem {
     // If there are two instances of the same venue code in the system
     for (WeddingVenue venue : venueList) {
 
-      if ((venue.get_Venue_Code()).equals(venueCode)) {
+      if ((venue.getVenueCode()).equals(venueCode)) {
 
         MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(
-            venue.get_Venue_Code(), venue.get_Venue_Name());
+            venue.getVenueCode(), venue.getVenueName());
 
         return;
       }
