@@ -6,10 +6,12 @@ import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
 
-  ArrayList<WeddingVenue> venueList = new ArrayList<>();
+  private ArrayList<WeddingVenue> venueList = new ArrayList<>();
 
-  int numberOfVenues = 0;
+  private int numberOfVenues = 0;
 
+  // A method to convert the number of venues to words when the number of venues if from
+  // 2 to 9.
   public String int_to_word(int numberOfVenues) {
 
     switch (numberOfVenues) {
