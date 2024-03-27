@@ -48,11 +48,11 @@ public class VenueHireSystem {
 
     switch (numberOfVenues) {
       case 0:
-        System.out.println("There are no venues in the system. Please create a venue first.");
+        MessageCli.NO_VENUES.printMessage();
         break;
 
       case 1:
-        System.out.println("There is one venue in the system:");
+        MessageCli.NUMBER_VENUES.printMessage("is", "one", "");
         MessageCli.VENUE_ENTRY.printMessage(
             venueList.get(0).getVenueName(),
             venueList.get(0).getVenueCode(),
@@ -101,8 +101,7 @@ public class VenueHireSystem {
     // If the venue name is empty
     if (venueName.isEmpty()) {
 
-      System.out.println("Venue not created: venue name must not be empty.");
-
+      MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
       return;
     }
 
@@ -125,15 +124,13 @@ public class VenueHireSystem {
 
       if (intVenueCapacity <= 0) {
 
-        System.out.println("Venue not created: capacity must be a positive number.");
-
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
         return;
       }
 
     } catch (Exception e) {
 
-      System.out.println("Venue not created: capacity must be a number.");
-
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
       return;
     }
 
@@ -144,15 +141,13 @@ public class VenueHireSystem {
 
       if (intVenueHireFee <= 0) {
 
-        System.out.println("Venue not created: hire fee must be a positive number.");
-
+        MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive");
         return;
       }
 
     } catch (Exception e) {
 
-      System.out.println("Venue not created: hire fee must be a number.");
-
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
       return;
     }
 
