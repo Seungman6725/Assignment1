@@ -248,8 +248,6 @@ public class VenueHireSystem {
       return;
     }
 
-    // After passing all checks, add booking to arraylist and print according message
-
     // Find venue name according to inputted venue code
     String venueName = "";
 
@@ -261,6 +259,19 @@ public class VenueHireSystem {
       }
     }
 
+    // If booking is attempted on an already booked date, print according message
+    for (Booking booking : bookingList) {
+
+      if ((booking.getBookingDate()).equals(options[1])) {
+
+        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
+            venueName, booking.getBookingDate());
+
+        return;
+      }
+    }
+
+    // After passing all checks, add booking to arraylist and print according message
     bookingList.add(new Booking(venueName, options[1], options[3]));
 
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
