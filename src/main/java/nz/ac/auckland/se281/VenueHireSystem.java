@@ -7,6 +7,7 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class VenueHireSystem {
 
   private ArrayList<WeddingVenue> venueList = new ArrayList<>();
+  private ArrayList<Booking> bookingList = new ArrayList<>();
   private int numberOfVenues = 0;
   private String systemDate = "";
 
@@ -246,6 +247,24 @@ public class VenueHireSystem {
 
       return;
     }
+
+    // After passing all checks, add booking to arraylist and print according message
+
+    // Find venue name according to inputted venue code
+    String venueName = "";
+
+    for (WeddingVenue venue : venueList) {
+
+      if (venue.getVenueCode().equals(options[0])) {
+
+        venueName = venue.getVenueName();
+      }
+    }
+
+    bookingList.add(new Booking(venueName, options[1], options[3]));
+
+    MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
+        BookingReferenceGenerator.generateBookingReference(), venueName, options[1], options[3]);
   }
 
   public void printBookings(String venueCode) {
