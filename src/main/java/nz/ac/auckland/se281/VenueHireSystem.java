@@ -195,6 +195,15 @@ public class VenueHireSystem {
 
       return;
     }
+
+    // If the venue code does not exist
+    for (WeddingVenue venue : venueList) {
+
+      if (!(venue.getVenueCode().equals(options[0]))) {
+
+        MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
+      }
+    }
   }
 
   public void printBookings(String venueCode) {
