@@ -8,7 +8,7 @@ public class VenueHireSystem {
 
   private ArrayList<WeddingVenue> venueList = new ArrayList<>();
   private int numberOfVenues = 0;
-  private String systemDate;
+  private String systemDate = " ";
 
   // A method to convert the number of venues to words when the number of venues if from
   // 2 to 9.
@@ -167,7 +167,15 @@ public class VenueHireSystem {
   }
 
   public void printSystemDate() {
-    // TODO implement this method
+
+    if (systemDate.isEmpty()) {
+
+      MessageCli.CURRENT_DATE.printMessage("not set");
+
+    } else {
+
+      MessageCli.CURRENT_DATE.printMessage(systemDate);
+    }
   }
 
   public void makeBooking(String[] options) {
