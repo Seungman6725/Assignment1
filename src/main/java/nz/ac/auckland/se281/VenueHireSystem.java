@@ -214,6 +214,26 @@ public class VenueHireSystem {
 
       MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
     }
+
+    // Check for if the inputted date is in the past
+
+    // Split both inputted and system dates in to days,month, and year
+    String[] inputDateParts = options[1].split("/");
+    String[] systemDateParts = systemDate.split("/");
+
+    // Convert both arrays so values contained are integers
+    int[] intInputDateParts = new int[inputDateParts.length];
+    int[] intSystemDateParts = new int[systemDateParts.length];
+
+    for (int i = 0; i < intInputDateParts.length; i++) {
+
+      intInputDateParts[i] = Integer.parseInt(inputDateParts[i]);
+    }
+
+    for (int i = 0; i < intSystemDateParts.length; i++) {
+
+      intSystemDateParts[i] = Integer.parseInt(systemDateParts[i]);
+    }
   }
 
   public void printBookings(String venueCode) {
