@@ -196,13 +196,23 @@ public class VenueHireSystem {
       return;
     }
 
-    // If the venue code does not exist
+    // Initialise boolean flag for check
+    boolean venueCodeFound = false;
+
+    // If the venue code exists save it to variable and exit the for loop
     for (WeddingVenue venue : venueList) {
 
-      if (!(venue.getVenueCode().equals(options[0]))) {
+      if (venue.getVenueCode().equals(options[0])) {
 
-        MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
+        venueCodeFound = true;
+        break;
       }
+    }
+
+    // If venue code doesn't exist, print corresponding message
+    if (!venueCodeFound) {
+
+      MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
     }
   }
 
