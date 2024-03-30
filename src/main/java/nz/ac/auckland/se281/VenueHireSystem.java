@@ -213,6 +213,8 @@ public class VenueHireSystem {
     if (!venueCodeFound) {
 
       MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
+
+      return;
     }
 
     // Check for if the inputted date is in the past
@@ -233,6 +235,16 @@ public class VenueHireSystem {
     for (int i = 0; i < intSystemDateParts.length; i++) {
 
       intSystemDateParts[i] = Integer.parseInt(systemDateParts[i]);
+    }
+
+    // If any part of the inputted dates are lower than the system date, print according message
+    if ((intInputDateParts[0] < intSystemDateParts[0])
+        || (intInputDateParts[1] < intSystemDateParts[1])
+        || (intInputDateParts[2] < intSystemDateParts[2])) {
+
+      MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
+
+      return;
     }
   }
 
