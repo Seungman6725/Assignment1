@@ -238,10 +238,27 @@ public class VenueHireSystem {
       intSystemDateParts[i] = Integer.parseInt(systemDateParts[i]);
     }
 
-    // If any part of the inputted dates are lower than the system date, print according message
-    if ((intInputDateParts[0] < intSystemDateParts[0])
-        || (intInputDateParts[1] < intSystemDateParts[1])
-        || (intInputDateParts[2] < intSystemDateParts[2])) {
+    // If the year of the inputted date is less than the system date return according message
+    if ((intInputDateParts[2] < intSystemDateParts[2])) {
+
+      MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
+
+      return;
+    }
+
+    // If the year is the same but the month count is lower
+    else if ((intInputDateParts[2] == intSystemDateParts[2])
+        && intInputDateParts[1] < intSystemDateParts[1]) {
+
+      MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
+
+      return;
+    }
+
+    // If the year and month is the same but the date is lower
+    else if ((intInputDateParts[2] == intSystemDateParts[2])
+        && intInputDateParts[1] == intSystemDateParts[1]
+        && intInputDateParts[0] < intSystemDateParts[0]) {
 
       MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
 
