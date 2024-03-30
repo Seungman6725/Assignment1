@@ -271,6 +271,28 @@ public class VenueHireSystem {
       }
     }
 
+    // Check if number of attendees are less than 25% or more than 100% of the venue capacity and
+    // adjust number accordingly
+    // Find the venue capacity from corresponding venue code
+    String venueCapacity = "";
+
+    for (WeddingVenue venue : venueList) {
+
+      if (venue.getVenueCode().equals(options[0])) {
+
+        venueCapacity = venue.getVenueCapacity();
+      }
+    }
+    // If number of attendees is less than 25% of the venue capacity adjust number accordingly
+    int adjustedNumberAttendees;
+    if (Integer.parseInt(options[3]) < (Integer.parseInt(venueCapacity) * 0.25)) {
+
+      adjustedNumberAttendees = (int) (Integer.parseInt(venueCapacity) * 0.25);
+
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+          options[3], Integer.toString(adjustedNumberAttendees), venueCapacity);
+    }
+
     // After passing all checks, add booking to arraylist and print according message
     bookingList.add(new Booking(venueName, options[1], options[3]));
 

@@ -4,13 +4,13 @@ public class Booking {
 
   private String venueName;
   private String date;
-  private String numberOfAtendees;
+  private String numberOfAttendees;
 
-  public Booking(String venueName, String date, String numberOfAtendees) {
+  public Booking(String venueName, String date, String numberOfAttendees) {
 
     this.venueName = venueName;
     this.date = date;
-    this.numberOfAtendees = numberOfAtendees;
+    this.numberOfAttendees = numberOfAttendees;
   }
 
   public String getVenueName() {
@@ -25,6 +25,6 @@ public class Booking {
 
   public String getNumberOfAtendees() {
 
-    return numberOfAtendees;
+    return numberOfAttendees;
   }
 }
