@@ -168,6 +168,7 @@ public class VenueHireSystem {
 
   public void printSystemDate() {
 
+    // If system date has not been set, print according message.
     if (systemDate.isEmpty()) {
 
       MessageCli.CURRENT_DATE.printMessage("not set");
@@ -179,7 +180,21 @@ public class VenueHireSystem {
   }
 
   public void makeBooking(String[] options) {
-    // TODO implement this method
+
+    // If the system date has not been set.
+    if (systemDate.isEmpty()) {
+
+      MessageCli.BOOKING_NOT_MADE_DATE_NOT_SET.printMessage();
+
+      return;
+
+      // If there are no venues created
+    } else if (numberOfVenues == 0) {
+
+      MessageCli.BOOKING_NOT_MADE_NO_VENUES.printMessage();
+
+      return;
+    }
   }
 
   public void printBookings(String venueCode) {
