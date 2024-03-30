@@ -285,9 +285,18 @@ public class VenueHireSystem {
     }
     // If number of attendees is less than 25% of the venue capacity adjust number accordingly
     int adjustedNumberAttendees;
+
     if (Integer.parseInt(options[3]) < (Integer.parseInt(venueCapacity) * 0.25)) {
 
       adjustedNumberAttendees = (int) (Integer.parseInt(venueCapacity) * 0.25);
+
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+          options[3], Integer.toString(adjustedNumberAttendees), venueCapacity);
+    }
+    // If number of attendees is more than 100% of the venue capacity adjust number accordingly
+    else if (Integer.parseInt(options[3]) > (Integer.parseInt(venueCapacity))) {
+
+      adjustedNumberAttendees = Integer.parseInt(venueCapacity);
 
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
           options[3], Integer.toString(adjustedNumberAttendees), venueCapacity);
