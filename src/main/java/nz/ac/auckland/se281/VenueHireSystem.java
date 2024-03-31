@@ -408,7 +408,7 @@ public class VenueHireSystem {
       if (venueName.equals(booking.getVenueName())) {
 
         MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(
-            BookingReferenceGenerator.generateBookingReference(), booking.getBookingDate());
+            booking.getBookingReference(), booking.getBookingDate());
 
         bookingPresent = true;
       }
