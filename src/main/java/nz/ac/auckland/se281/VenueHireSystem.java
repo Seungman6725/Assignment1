@@ -369,7 +369,39 @@ public class VenueHireSystem {
   }
 
   public void printBookings(String venueCode) {
-    // TODO implement this method
+
+    String venueName = "";
+    boolean bookingPresent = false;
+
+    // Find corresponding venue name from code
+    for (WeddingVenue venue : venueList) {
+
+      if (venueCode.equals(venue.getVenueCode())) {
+
+        venueName = venue.getVenueName();
+      }
+    }
+
+    // Print header
+    MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName);
+
+    // When there are bookings for the specified venue
+    for (Booking booking : bookingList) {
+
+      if (venueName.equals(booking.getVenueName())) {
+
+        MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(
+            BookingReferenceGenerator.generateBookingReference(), booking.getBookingDate());
+
+        bookingPresent = true;
+      }
+    }
+
+    // When there are no bookings for the specified venue
+    if (!bookingPresent) {
+
+      MessageCli.PRINT_BOOKINGS_NONE.printMessage(venueName);
+    }
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
