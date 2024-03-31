@@ -372,6 +372,7 @@ public class VenueHireSystem {
 
     String venueName = "";
     boolean bookingPresent = false;
+    boolean venueCreated = false;
 
     // Find corresponding venue name from code
     for (WeddingVenue venue : venueList) {
@@ -379,9 +380,16 @@ public class VenueHireSystem {
       if (venueCode.equals(venue.getVenueCode())) {
 
         venueName = venue.getVenueName();
+
+        venueCreated = true;
       }
     }
+    // Check if venueCode doesn't exist
+    if (!venueCreated) {
 
+      MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
+      return;
+    }
     // Print header
     MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName);
 
