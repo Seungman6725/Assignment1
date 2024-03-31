@@ -67,31 +67,24 @@ public class VenueHireSystem {
   public String nextAvailableDate(String venueName) {
 
     String tempDate = systemDate;
+    ArrayList<String> bookedDates = new ArrayList<>();
 
     for (Booking booking : bookingList) {
 
-      // If the venue already has a booking
+      // Sort all booked dates for a specific venue into an arraylist
       if (venueName.equals(booking.getVenueName())) {
 
-        // Skip to the next iteration of the booking if the booked date equals the temporary date
-        // and increment tempDate
-        if (booking.getBookingDate().equals(tempDate)) {
+        bookedDates.add(booking.getBookingDate());
+      }
 
-          tempDate = nextDate(tempDate);
+      // Initiate while loop to iterate over bookedDates
+      while (bookedDates.contains(tempDate)) {
 
-          continue;
-
-          // If the booked date is not equal to the temporary date, temporary date is the next
-          // available date
-        } else if (!(booking.getBookingDate().equals(tempDate))) {
-
-          return tempDate;
-        }
+        tempDate = nextDate(tempDate);
       }
     }
 
-    // Return the current date if there are no bookings for that venue
-    return systemDate;
+    return tempDate;
   }
 
   public void printVenues() {
