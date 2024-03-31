@@ -362,10 +362,19 @@ public class VenueHireSystem {
     }
 
     // After passing all checks, add booking to arraylist and print according message
-    bookingList.add(new Booking(venueName, options[1], options[3]));
+    bookingList.add(
+        new Booking(
+            BookingReferenceGenerator.generateBookingReference(),
+            venueName,
+            options[1],
+            options[3]));
+
+    // Retrieve the last booking instance from the bookingList
+    Booking lastBooking = bookingList.get(bookingList.size() - 1);
+    String bookingReference = lastBooking.getBookingReference();
 
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
-        BookingReferenceGenerator.generateBookingReference(), venueName, options[1], options[3]);
+        bookingReference, venueName, options[1], options[3]);
   }
 
   public void printBookings(String venueCode) {
