@@ -45,6 +45,24 @@ public class VenueHireSystem {
     }
   }
 
+  // Method that increments date
+  public String nextDate(String currentDate) {
+
+    int day;
+    int month;
+    int year;
+
+    String[] dateParts = currentDate.split("/");
+
+    day = Integer.parseInt(dateParts[0]);
+    month = Integer.parseInt(dateParts[1]);
+    year = Integer.parseInt(dateParts[2]);
+
+    day++;
+
+    return String.format("%02d/%02d/%02d", day, month, year);
+  }
+
   // Method that returns next available date of specific venue
   public String nextAvailableDate(String venueName) {
 
@@ -59,19 +77,7 @@ public class VenueHireSystem {
         // and increment tempDate
         if (booking.getBookingDate().equals(tempDate)) {
 
-          int day;
-          int month;
-          int year;
-
-          String[] dateParts = booking.getBookingDate().split("/");
-
-          day = Integer.parseInt(dateParts[0]);
-          month = Integer.parseInt(dateParts[1]);
-          year = Integer.parseInt(dateParts[2]);
-
-          day++;
-
-          tempDate = String.format("%02d/%02d/%02d", day, month, year);
+          tempDate = nextDate(tempDate);
 
           continue;
 
