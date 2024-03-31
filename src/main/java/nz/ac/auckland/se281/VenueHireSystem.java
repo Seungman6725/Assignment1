@@ -101,7 +101,8 @@ public class VenueHireSystem {
             venueList.get(0).getVenueName(),
             venueList.get(0).getVenueCode(),
             venueList.get(0).getVenueCapacity(),
-            venueList.get(0).getVenueHireFee());
+            venueList.get(0).getVenueHireFee(),
+            nextAvailableDate(venueList.get(0).getVenueName()));
         break;
     }
 
@@ -117,7 +118,7 @@ public class VenueHireSystem {
             venue.getVenueCode(),
             venue.getVenueCapacity(),
             venue.getVenueHireFee(),
-            "TODO");
+            nextAvailableDate(venue.getVenueName()));
       }
     }
 
@@ -133,7 +134,7 @@ public class VenueHireSystem {
             venue.getVenueCode(),
             venue.getVenueCapacity(),
             venue.getVenueHireFee(),
-            "TODO");
+            nextAvailableDate(venue.getVenueName()));
       }
     }
   }
