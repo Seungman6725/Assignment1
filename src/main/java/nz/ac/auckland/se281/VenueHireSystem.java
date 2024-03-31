@@ -45,6 +45,49 @@ public class VenueHireSystem {
     }
   }
 
+  // Method that returns next available date of specific venue
+  public String nextAvailableDate(String venueName) {
+
+    String tempDate = systemDate;
+
+    for (Booking booking : bookingList) {
+
+      // If the venue already has a booking
+      if (venueName.equals(booking.getVenueName())) {
+
+        // Skip to the next iteration of the booking if the booked date equals the temporary date
+        // and increment tempDate
+        if (booking.getBookingDate().equals(tempDate)) {
+
+          int day;
+          int month;
+          int year;
+
+          String[] dateParts = booking.getBookingDate().split("/");
+
+          day = Integer.parseInt(dateParts[0]);
+          month = Integer.parseInt(dateParts[1]);
+          year = Integer.parseInt(dateParts[2]);
+
+          day++;
+
+          tempDate = String.format("%02d/%02d/%02d", day, month, year);
+
+          continue;
+
+          // If the booked date is not equal to the temporary date, temporary date is the next
+          // available date
+        } else if (!(booking.getBookingDate().equals(tempDate))) {
+
+          return tempDate;
+        }
+      }
+    }
+
+    // Return the current date if there are no bookings for that venue
+    return systemDate;
+  }
+
   public void printVenues() {
 
     switch (numberOfVenues) {
@@ -58,8 +101,7 @@ public class VenueHireSystem {
             venueList.get(0).getVenueName(),
             venueList.get(0).getVenueCode(),
             venueList.get(0).getVenueCapacity(),
-            venueList.get(0).getVenueHireFee(),
-            "TODO");
+            venueList.get(0).getVenueHireFee());
         break;
     }
 
