@@ -449,7 +449,32 @@ public class VenueHireSystem {
         "Catering (" + cateringType.getName() + ")", bookingReference);
   }
 
-  public void addServiceMusic(String bookingReference) {}
+  public void addServiceMusic(String bookingReference) {
+
+    // Check if booking reference is valid
+    boolean bookingReferencePresent = false;
+    for (Booking booking : bookingList) {
+
+      if (booking.getBookingReference().equals(bookingReference)) {
+
+        bookingReferencePresent = true;
+
+        break;
+      }
+    }
+
+    // Check if the booking reference is not valid
+    if (bookingReferencePresent == false) {
+
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
+      return;
+    }
+
+    // Crete music service instance
+    Music music = new Music("Music", 500);
+
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
+  }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {}
 
