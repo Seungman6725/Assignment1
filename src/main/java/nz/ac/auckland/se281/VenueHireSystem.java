@@ -345,23 +345,25 @@ public class VenueHireSystem {
         venueCapacity = venue.getVenueCapacity();
       }
     }
+
     // If number of attendees is less than 25% of the venue capacity adjust number accordingly
-    int adjustedNumberAttendees = 0;
+    // Initialise numberOfAttendees variable
+    String numberOfAttendees = options[3];
 
     if (Integer.parseInt(options[3]) < (Integer.parseInt(venueCapacity) * 0.25)) {
 
-      adjustedNumberAttendees = (int) (Integer.parseInt(venueCapacity) * 0.25);
+      numberOfAttendees = Integer.toString((int) (Integer.parseInt(venueCapacity) * 0.25));
 
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
-          options[3], Integer.toString(adjustedNumberAttendees), venueCapacity);
+          options[3], numberOfAttendees, venueCapacity);
     }
     // If number of attendees is more than 100% of the venue capacity adjust number accordingly
     else if (Integer.parseInt(options[3]) > (Integer.parseInt(venueCapacity))) {
 
-      adjustedNumberAttendees = Integer.parseInt(venueCapacity);
+      numberOfAttendees = venueCapacity;
 
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
-          options[3], Integer.toString(adjustedNumberAttendees), venueCapacity);
+          options[3], numberOfAttendees, venueCapacity);
     }
 
     // After passing all checks, add booking to arraylist and print according message
@@ -370,7 +372,7 @@ public class VenueHireSystem {
             BookingReferenceGenerator.generateBookingReference(),
             venueName,
             options[1],
-            Integer.toString(adjustedNumberAttendees),
+            numberOfAttendees,
             options[2],
             systemDate));
 
@@ -379,7 +381,7 @@ public class VenueHireSystem {
     String bookingReference = lastBooking.getBookingReference();
 
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
-        bookingReference, venueName, options[1], Integer.toString(adjustedNumberAttendees));
+        bookingReference, venueName, options[1], numberOfAttendees);
   }
 
   public void printBookings(String venueCode) {
@@ -613,18 +615,18 @@ public class VenueHireSystem {
 
     MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(venueHireFee);
 
-    if (cateringPresent = true) {
+    if (cateringPresent == true) {
 
       MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(
           cateringName, Integer.toString(cateringCost * Integer.parseInt(numberOfAttendees)));
     }
 
-    if (musicPresent = true) {
+    if (musicPresent == true) {
 
       MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage("500");
     }
 
-    if (floralPresent = true) {
+    if (floralPresent == true) {
 
       MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(
           floralName, Integer.toString(floralCost));
