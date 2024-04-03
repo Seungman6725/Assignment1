@@ -7,7 +7,7 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class VenueHireSystem {
 
   private ArrayList<WeddingVenue> venueList = new ArrayList<>();
-  private ArrayList<Booking> bookingList = new ArrayList<>();
+  public ArrayList<Booking> bookingList = new ArrayList<>();
   private int numberOfVenues = 0;
   private String systemDate = "";
 
@@ -422,16 +422,34 @@ public class VenueHireSystem {
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
-    // TODO implement this method
+
+    // Check if booking reference is valid
+    boolean bookingReferencePresent = false;
+    for (Booking booking : bookingList) {
+
+      if (booking.getBookingReference().equals(bookingReference)) {
+
+        bookingReferencePresent = true;
+
+        break;
+
+      } else if (bookingReferencePresent == false) {
+
+        MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
+        return;
+      }
+    }
+
+    // Crete catering instance
+    Catering cater = new Catering(cateringType.getName(), cateringType.getCostPerPerson());
+
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
+        "Catering (" + cateringType.getName() + ")", bookingReference);
   }
 
-  public void addServiceMusic(String bookingReference) {
-    // TODO implement this method
-  }
+  public void addServiceMusic(String bookingReference) {}
 
-  public void addServiceFloral(String bookingReference, FloralType floralType) {
-    // TODO implement this method
-  }
+  public void addServiceFloral(String bookingReference, FloralType floralType) {}
 
   public void viewInvoice(String bookingReference) {
     // TODO implement this method
