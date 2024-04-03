@@ -476,7 +476,33 @@ public class VenueHireSystem {
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
   }
 
-  public void addServiceFloral(String bookingReference, FloralType floralType) {}
+  public void addServiceFloral(String bookingReference, FloralType floralType) {
+
+    // Check if booking reference is valid
+    boolean bookingReferencePresent = false;
+    for (Booking booking : bookingList) {
+
+      if (booking.getBookingReference().equals(bookingReference)) {
+
+        bookingReferencePresent = true;
+
+        break;
+      }
+    }
+
+    // Check if the booking reference is not valid
+    if (bookingReferencePresent == false) {
+
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
+      return;
+    }
+
+    // Crete floral service instance
+    Floral floral = new Floral(floralType.getName(), floralType.getCost());
+
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
+        "Floral (" + floralType.getName() + ")", bookingReference);
+  }
 
   public void viewInvoice(String bookingReference) {
     // TODO implement this method
