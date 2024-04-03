@@ -432,12 +432,14 @@ public class VenueHireSystem {
         bookingReferencePresent = true;
 
         break;
-
-      } else if (bookingReferencePresent == false) {
-
-        MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
-        return;
       }
+    }
+
+    // Check if the booking reference is not valid
+    if (bookingReferencePresent == false) {
+
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
+      return;
     }
 
     // Crete catering instance
