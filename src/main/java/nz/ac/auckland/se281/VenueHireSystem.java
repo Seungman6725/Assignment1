@@ -633,6 +633,10 @@ public class VenueHireSystem {
     }
 
     MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(
-        Integer.toString(Integer.parseInt(venueHireFee) + cateringCost + musicCost + floralCost));
+        Integer.toString(
+            Integer.parseInt(venueHireFee)
+                + (cateringCost * Integer.parseInt(numberOfAttendees))
+                + musicCost
+                + floralCost));
   }
 }
