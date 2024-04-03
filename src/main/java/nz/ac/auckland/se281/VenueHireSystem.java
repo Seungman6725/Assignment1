@@ -471,7 +471,7 @@ public class VenueHireSystem {
     }
 
     // Crete music service instance
-    Music music = new Music("Music", 500);
+    Music music = new Music();
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
   }

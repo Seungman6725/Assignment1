@@ -2,8 +2,8 @@ package nz.ac.auckland.se281;
 
 public class Music extends Services {
 
-  public Music(String cateringTypeName, int cateringTypeCost) {
+  public Music() {
 
-    super(cateringTypeName, cateringTypeCost);
+    super("Music", 500);
   }
 }
