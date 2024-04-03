@@ -7,7 +7,10 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class VenueHireSystem {
 
   private ArrayList<WeddingVenue> venueList = new ArrayList<>();
-  public ArrayList<Booking> bookingList = new ArrayList<>();
+  private ArrayList<Booking> bookingList = new ArrayList<>();
+  private ArrayList<Catering> cateringList = new ArrayList<>();
+  private ArrayList<Floral> floralList = new ArrayList<>();
+  private ArrayList<Music> musicList = new ArrayList<>();
   private int numberOfVenues = 0;
   private String systemDate = "";
 
@@ -445,8 +448,8 @@ public class VenueHireSystem {
     }
 
     // Crete catering instance
-    Catering cater =
-        new Catering(cateringType.getName(), cateringType.getCostPerPerson(), bookingReference);
+    cateringList.add(
+        new Catering(cateringType.getName(), cateringType.getCostPerPerson(), bookingReference));
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
         "Catering (" + cateringType.getName() + ")", bookingReference);
@@ -474,7 +477,7 @@ public class VenueHireSystem {
     }
 
     // Crete music service instance
-    Music music = new Music(bookingReference);
+    musicList.add(new Music(bookingReference));
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
   }
@@ -501,7 +504,7 @@ public class VenueHireSystem {
     }
 
     // Crete floral service instance
-    Floral floral = new Floral(floralType.getName(), floralType.getCost(), bookingReference);
+    floralList.add(new Floral(floralType.getName(), floralType.getCost(), bookingReference));
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
         "Floral (" + floralType.getName() + ")", bookingReference);
@@ -533,8 +536,12 @@ public class VenueHireSystem {
     String partyDate = "";
     String numberOfAttendees = "";
     String venueName = "";
-    String venueCapacity = "";
     String venueHireFee = "";
+    String cateringName = "";
+    String floralName = "";
+    int cateringCost = 0;
+    int floralCost = 0;
+    int musicCost = 0;
     // Iterate through the booking list to find the corresponding booking
 
     for (Booking booking : bookingList) {
@@ -555,14 +562,75 @@ public class VenueHireSystem {
 
       if (venue.getVenueName().equals(venueName)) {
 
-        venueCapacity = venue.getVenueCapacity();
         venueHireFee = venue.getVenueHireFee();
         break;
       }
     }
 
+    // Iterate through cateringList to find corresponding price and name
+    boolean cateringPresent = false;
+
+    for (Catering cater : cateringList) {
+
+      if (cater.getBookingReference().equals(bookingReference)) {
+
+        cateringName = cater.getCateringTypeName();
+        cateringCost = cater.getCateringTypeCost();
+        cateringPresent = true;
+        break;
+      }
+    }
+
+    // Iterate through musicList to see if music service is present
+    boolean musicPresent = false;
+    for (Music music : musicList) {
+
+      if (music.getBookingReference().equals(bookingReference)) {
+
+        musicPresent = true;
+        musicCost = 500;
+        break;
+      }
+    }
+
+    // Iterate through floralList to find corresponding price and name
+    boolean floralPresent = false;
+    for (Floral floral : floralList) {
+
+      if (floral.getBookingReference().equals(bookingReference)) {
+
+        floralName = floral.getCateringTypeName();
+        floralCost = floral.getCateringTypeCost();
+        floralPresent = true;
+        break;
+      }
+    }
+
     // Print according message
+
     MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(
         bookingReference, customerEmail, dateOfBooking, partyDate, numberOfAttendees, venueName);
+
+    MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(venueHireFee);
+
+    if (cateringPresent = true) {
+
+      MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(
+          cateringName, Integer.toString(cateringCost * Integer.parseInt(numberOfAttendees)));
+    }
+
+    if (musicPresent = true) {
+
+      MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage("500");
+    }
+
+    if (floralPresent = true) {
+
+      MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(
+          floralName, Integer.toString(floralCost));
+    }
+
+    MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(
+        Integer.toString(Integer.parseInt(venueHireFee) + cateringCost + musicCost + floralCost));
   }
 }
