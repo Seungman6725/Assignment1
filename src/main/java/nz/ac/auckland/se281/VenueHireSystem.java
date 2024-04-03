@@ -367,7 +367,9 @@ public class VenueHireSystem {
             BookingReferenceGenerator.generateBookingReference(),
             venueName,
             options[1],
-            Integer.toString(adjustedNumberAttendees)));
+            Integer.toString(adjustedNumberAttendees),
+            options[2],
+            systemDate));
 
     // Retrieve the last booking instance from the bookingList
     Booking lastBooking = bookingList.get(bookingList.size() - 1);
@@ -523,5 +525,43 @@ public class VenueHireSystem {
       MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
       return;
     }
+
+    // Initialise local variables
+    String customerEmail = "";
+    String dateOfBooking = "";
+    String partyDate = "";
+    String numberOfAttendees = "";
+    String venueName = "";
+    String venueCapacity = "";
+    String venueHireFee = "";
+    // Iterate through the booking list to find the corresponding booking
+
+    for (Booking booking : bookingList) {
+
+      if (booking.getBookingReference().equals(bookingReference)) {
+
+        customerEmail = booking.getCustomerEmail();
+        dateOfBooking = booking.getDateOfBooking();
+        partyDate = booking.getBookingDate();
+        numberOfAttendees = booking.getNumberOfAtendees();
+        venueName = booking.getVenueName();
+        break;
+      }
+    }
+
+    // Iterate through the venue list to find the corresponding venue
+    for (WeddingVenue venue : venueList) {
+
+      if (venue.getVenueName().equals(venueName)) {
+
+        venueCapacity = venue.getVenueCapacity();
+        venueHireFee = venue.getVenueHireFee();
+        break;
+      }
+    }
+
+    // Print according message
+    MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(
+        bookingReference, customerEmail, dateOfBooking, partyDate, numberOfAttendees, venueName);
   }
 }
