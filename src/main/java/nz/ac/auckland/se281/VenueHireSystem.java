@@ -343,7 +343,7 @@ public class VenueHireSystem {
       }
     }
     // If number of attendees is less than 25% of the venue capacity adjust number accordingly
-    int adjustedNumberAttendees;
+    int adjustedNumberAttendees = 0;
 
     if (Integer.parseInt(options[3]) < (Integer.parseInt(venueCapacity) * 0.25)) {
 
@@ -367,14 +367,14 @@ public class VenueHireSystem {
             BookingReferenceGenerator.generateBookingReference(),
             venueName,
             options[1],
-            options[3]));
+            Integer.toString(adjustedNumberAttendees)));
 
     // Retrieve the last booking instance from the bookingList
     Booking lastBooking = bookingList.get(bookingList.size() - 1);
     String bookingReference = lastBooking.getBookingReference();
 
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(
-        bookingReference, venueName, options[1], options[3]);
+        bookingReference, venueName, options[1], Integer.toString(adjustedNumberAttendees));
   }
 
   public void printBookings(String venueCode) {
@@ -505,6 +505,23 @@ public class VenueHireSystem {
   }
 
   public void viewInvoice(String bookingReference) {
-    // TODO implement this method
+
+    // Check if booking reference is valid
+    boolean bookingReferencePresent = false;
+    for (Booking booking : bookingList) {
+
+      if (booking.getBookingReference().equals(bookingReference)) {
+
+        bookingReferencePresent = true;
+        break;
+      }
+    }
+
+    // Check if the booking reference is not valid
+    if (bookingReferencePresent == false) {
+
+      MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
+      return;
+    }
   }
 }
