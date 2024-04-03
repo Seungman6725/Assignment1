@@ -493,7 +493,7 @@ public class VenueHireSystem {
     // Check if the booking reference is not valid
     if (bookingReferencePresent == false) {
 
-      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
       return;
     }
 
