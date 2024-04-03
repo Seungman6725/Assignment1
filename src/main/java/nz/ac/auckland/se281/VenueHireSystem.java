@@ -445,7 +445,8 @@ public class VenueHireSystem {
     }
 
     // Crete catering instance
-    Catering cater = new Catering(cateringType.getName(), cateringType.getCostPerPerson());
+    Catering cater =
+        new Catering(cateringType.getName(), cateringType.getCostPerPerson(), bookingReference);
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
         "Catering (" + cateringType.getName() + ")", bookingReference);
@@ -473,7 +474,7 @@ public class VenueHireSystem {
     }
 
     // Crete music service instance
-    Music music = new Music();
+    Music music = new Music(bookingReference);
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
   }
@@ -500,7 +501,7 @@ public class VenueHireSystem {
     }
 
     // Crete floral service instance
-    Floral floral = new Floral(floralType.getName(), floralType.getCost());
+    Floral floral = new Floral(floralType.getName(), floralType.getCost(), bookingReference);
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
         "Floral (" + floralType.getName() + ")", bookingReference);
