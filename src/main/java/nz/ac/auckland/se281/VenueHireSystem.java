@@ -324,12 +324,15 @@ public class VenueHireSystem {
     // If booking is attempted on an already booked date, print according message
     for (Booking booking : bookingList) {
 
-      if ((booking.getBookingDate()).equals(options[1])) {
+      // Check if booking has same venue name
+      if (booking.getVenueName().equals(venueName)) {
+        if ((booking.getBookingDate()).equals(options[1])) {
 
-        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
-            venueName, booking.getBookingDate());
+          MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(
+              venueName, booking.getBookingDate());
 
-        return;
+          return;
+        }
       }
     }
 
@@ -398,6 +401,7 @@ public class VenueHireSystem {
         venueName = venue.getVenueName();
 
         venueCreated = true;
+        break;
       }
     }
     // Check if venueCode doesn't exist
