@@ -63,7 +63,7 @@ public class VenueHireSystem {
 
     day++;
 
-    return String.format("%02d/%02d/%02d", day, month, year);
+    return String.format("%02d/%02d/%04d", day, month, year);
   }
 
   // Method that returns next available date of specific venue
@@ -79,12 +79,12 @@ public class VenueHireSystem {
 
         bookedDates.add(booking.getBookingDate());
       }
+    }
 
-      // Initiate while loop to iterate over bookedDates
-      while (bookedDates.contains(tempDate)) {
+    // Initiate while loop to iterate over bookedDates
+    while (bookedDates.contains(tempDate)) {
 
-        tempDate = nextDate(tempDate);
-      }
+      tempDate = nextDate(tempDate);
     }
 
     return tempDate;
