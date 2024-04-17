@@ -9,7 +9,7 @@ public class VenueHireSystem {
   private ArrayList<WeddingVenue> venueList = new ArrayList<>();
   private ArrayList<Booking> bookingList = new ArrayList<>();
   private ArrayList<Catering> cateringList = new ArrayList<>();
-  private ArrayList<Floral> floralList = new ArrayList<>();
+  private ArrayList<FloralService> floralList = new ArrayList<>();
   private ArrayList<Music> musicList = new ArrayList<>();
   private int numberOfVenues = 0;
   private String systemDate = "";
@@ -360,6 +360,7 @@ public class VenueHireSystem {
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
           options[3], numberOfAttendees, venueCapacity);
     }
+
     // If number of attendees is more than 100% of the venue capacity adjust number accordingly
     else if (Integer.parseInt(options[3]) > (Integer.parseInt(venueCapacity))) {
 
@@ -510,7 +511,7 @@ public class VenueHireSystem {
     }
 
     // Crete floral service instance
-    floralList.add(new Floral(floralType.getName(), floralType.getCost(), bookingReference));
+    floralList.add(new FloralService(floralType.getName(), floralType.getCost(), bookingReference));
 
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(
         "Floral (" + floralType.getName() + ")", bookingReference);
@@ -601,7 +602,7 @@ public class VenueHireSystem {
 
     // Iterate through floralList to find corresponding price and name
     boolean floralPresent = false;
-    for (Floral floral : floralList) {
+    for (FloralService floral : floralList) {
 
       if (floral.getBookingReference().equals(bookingReference)) {
 

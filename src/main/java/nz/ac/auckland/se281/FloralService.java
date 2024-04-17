@@ -1,8 +1,8 @@
 package nz.ac.auckland.se281;
 
-public class Floral extends Services {
+public class FloralService extends Services {
 
-  public Floral(String cateringTypeName, int cateringTypeCost, String bookingReference) {
+  public FloralService(String cateringTypeName, int cateringTypeCost, String bookingReference) {
 
     super(cateringTypeName, cateringTypeCost, bookingReference);
   }
