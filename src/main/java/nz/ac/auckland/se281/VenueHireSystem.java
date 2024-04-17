@@ -127,10 +127,7 @@ public class VenueHireSystem {
             venue.getVenueHireFee(),
             nextAvailableDate(venue.getVenueName()));
       }
-    }
-
-    // When the number of venues is 10 or more
-    else if (numberOfVenues >= 10) {
+    } else if (numberOfVenues >= 10) { // When the number of venues is 10 or more
 
       MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(numberOfVenues), "s");
 
@@ -294,21 +291,17 @@ public class VenueHireSystem {
       MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
 
       return;
-    }
-
-    // If the year is the same but the month count is lower
-    else if ((intInputDateParts[2] == intSystemDateParts[2])
-        && intInputDateParts[1] < intSystemDateParts[1]) {
+    } else if ((intInputDateParts[2] == intSystemDateParts[2])
+        && intInputDateParts[1]
+            < intSystemDateParts[1]) { // If the year is the same but the month count is lower
 
       MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
 
       return;
-    }
-
-    // If the year and month is the same but the date is lower
-    else if ((intInputDateParts[2] == intSystemDateParts[2])
+    } else if ((intInputDateParts[2] == intSystemDateParts[2])
         && intInputDateParts[1] == intSystemDateParts[1]
-        && intInputDateParts[0] < intSystemDateParts[0]) {
+        && intInputDateParts[0]
+            < intSystemDateParts[0]) { // If the year and month is the same but the date is lower
 
       MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
 
@@ -364,10 +357,10 @@ public class VenueHireSystem {
 
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
           options[3], numberOfAttendees, venueCapacity);
-    }
-
-    // If number of attendees is more than 100% of the venue capacity adjust number accordingly
-    else if (Integer.parseInt(options[3]) > (Integer.parseInt(venueCapacity))) {
+    } else if (Integer.parseInt(options[3])
+        > (Integer.parseInt(
+            venueCapacity))) { // If number of attendees is more than 100% of the venue capacity
+      // adjust number accordingly
 
       numberOfAttendees = venueCapacity;
 
