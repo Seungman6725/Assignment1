@@ -14,10 +14,12 @@ public class VenueHireSystem {
   private int numberOfVenues = 0;
   private String systemDate = "";
 
-  // A method to convert the number of venues to words when the number of venues if from
+  // A method to convert the number of venues to words when the number of venues is from
   // 2 to 9.
   public String intToWord(int numberOfVenues) {
 
+    // Switch case to check if the number of venues is from 2 to 9 and return according word
+    // equivalent of the number
     switch (numberOfVenues) {
       case 2:
         return "two";
@@ -55,14 +57,17 @@ public class VenueHireSystem {
     int month;
     int year;
 
+    // Splits the current date in to days,months, and years into an array
     String[] dateParts = currentDate.split("/");
 
+    // Assign variables to according part of date
     day = Integer.parseInt(dateParts[0]);
     month = Integer.parseInt(dateParts[1]);
     year = Integer.parseInt(dateParts[2]);
 
     day++;
 
+    // Return the incremented date in the correct format
     return String.format("%02d/%02d/%04d", day, month, year);
   }
 
